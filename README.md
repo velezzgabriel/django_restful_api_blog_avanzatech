@@ -251,6 +251,7 @@ urlpatterns = [
     path('list/', CommentList.as_view(), name='commentsList'),
     path('<int:pk>/', CommentDestroy.as_view(),
          name='commentsDestroy'),
+         
 
 ]
 ```
