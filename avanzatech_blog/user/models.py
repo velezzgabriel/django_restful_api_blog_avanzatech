@@ -19,6 +19,11 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
+        team_id = Team.objects.get_or_create(team_name='superadmin')
+        print(team_id)
+
+        extra_fields.setdefault('team_id', team_id[0])
+
         if extra_fields.get('is_staff') is not True:
             raise ValueError(_('Superuser must have is_staff=True.'))
         if extra_fields.get('is_superuser') is not True:
