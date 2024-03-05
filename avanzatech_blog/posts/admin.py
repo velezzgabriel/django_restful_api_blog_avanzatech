@@ -6,13 +6,12 @@ from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'post_content', 'author',
-                    'permission')
+    list_display = ('id', 'title', 'post_content', 'author')
     search_fields = ('title', 'post_content')
-    list_filter = ('permission', )
+    # list_filter = ( )
     readonly_fields = ('id',)
     fieldsets = [
-        ('Create new post', {'fields': ('title', 'post_content', 'author', 'permission',)}),]
+        ('Create new post', {'fields': ('title', 'post_content', 'author',)}),]
 
     # Create a post
     # add_fieldsets = (

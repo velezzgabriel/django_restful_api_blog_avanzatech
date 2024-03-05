@@ -15,7 +15,6 @@ class PostFactory(DjangoModelFactory):
     post_content = fake.text(max_nb_chars=10)
     # Assuming you have a CustomUserFactory
     author = factory.SubFactory(CustomUserFactory)
-    permission = factory.Iterator(
-        ['public', 'authenticated', 'team', 'author'])
+    
     created_at = fake.date_time_this_decade()
     modified_at = fake.date_time_this_decade()

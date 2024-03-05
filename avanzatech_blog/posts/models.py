@@ -10,17 +10,16 @@ class Post(models.Model):
     title = models.CharField(max_length=255, blank=False, null=False)
     post_content = models.TextField(blank=False, null=False)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    PERMISSION_CHOICES = [
-        ('public', 'non authenticated can read'),
-        ('authenticated', 'authenticated can read'),
-        ('team', 'team members can read'),
-        ('author', 'author can read')
-    ]
+    excerpt = models.TextField(blank=True, null=True)
 
-    permission = models.CharField(
-        max_length=15, choices=PERMISSION_CHOICES, blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.excerpt = self.post_content[:200]
+        super(Post, self).save(*args, **kwargs)
+
+        
 
     def __str__(self):
         return self.title

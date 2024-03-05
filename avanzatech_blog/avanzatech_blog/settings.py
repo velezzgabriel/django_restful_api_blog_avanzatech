@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'teams',
     'likes',
     'comments',
+    'categories',
+    'permissions',
+    'postCategoryPermission',
 
 ]
 
